@@ -28,6 +28,7 @@ namespace PluginUpdater
 			if (!File.Exists(ServerPath))
 			{
 				Console.WriteLine("Please put TerrariaServer.exe into the Binaries folder!");
+				Console.Write("\r\nPress any key to exit...");
 				Console.ReadKey();
 				return;
 			}
@@ -35,6 +36,7 @@ namespace PluginUpdater
 			if (!File.Exists(TShockPath))
 			{
 				Console.WriteLine("Please put TShockAPI.dll into the Binaries folder!");
+				Console.Write("\r\nPress any key to exit...");
 				Console.ReadKey();
 				return;
 			}
@@ -46,6 +48,14 @@ namespace PluginUpdater
 			Console.WriteLine(string.Format("Detected TShock API Version: {0}.{1}\r\n", TShock.Version.Major, TShock.Version.Minor));
 
 			var Plugins = Directory.GetFiles("Old");
+
+			if (Plugins.Count() == 0)
+			{
+				Console.WriteLine("Please put some old plugins into the Old folder!");
+				Console.Write("\r\nPress any key to exit...");
+				Console.ReadKey();
+				return;
+			}
 
 			#endregion
 
@@ -90,7 +100,7 @@ namespace PluginUpdater
 				if (Plugin.Modified)
 				{
 					Plugin.Assembly.Write(Path.Combine("New", Path.GetFileName(PluginPath)));
-					Console.WriteLine("		Saved!");
+					Console.WriteLine("	File saved!\r\n");
 				}
 			}
 
