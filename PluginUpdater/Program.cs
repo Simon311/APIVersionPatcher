@@ -86,8 +86,7 @@ namespace PluginUpdater
 									
 									NewVersion.ConstructorArguments.Add(new CustomAttributeArgument(Plugin.Module.TypeSystem.Int32, TShock.Version.Major));
 									NewVersion.ConstructorArguments.Add(new CustomAttributeArgument(Plugin.Module.TypeSystem.Int32, TShock.Version.Minor));
-									Class.CustomAttributes.Remove(Attribute);
-									Class.CustomAttributes.Add(NewVersion);
+									Class.CustomAttributes[i] = NewVersion;
 									 
 									Console.WriteLine("		Patched!");
 									Plugin.Modified = true;
